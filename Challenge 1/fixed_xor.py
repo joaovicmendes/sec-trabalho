@@ -8,9 +8,9 @@ def fixed_xor(buff1, buff2):
     for b1, b2 in zip(buff1, buff2):
         answer += bytes([b1^b2])
 
-    answer = codecs.encode(answer, 'hex')
-    return answer.decode()
+    return answer
 
-xord = fixed_xor("1c0111001f010100061a024b53535009181c", "686974207468652062756c6c277320657965")
-print(xord)
-print(codecs.decode(xord, 'hex'))
+# # Solution to Challenge 2
+# xord = fixed_xor("1c0111001f010100061a024b53535009181c", "686974207468652062756c6c277320657965")
+# print(codecs.decode(xord))
+# print(codecs.encode(xord, 'hex'))
