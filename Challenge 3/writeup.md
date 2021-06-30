@@ -94,7 +94,7 @@ Ao utilizarmos o programa `objdump` pra descompilar o código, obtemos o seguint
      689: c3                           	retl
 ```
 
-Em `func`, podemos observar que o programa compara `3405691582` (a versão decimal de `0xcafebebe`) com o registrador `ebp`. Essa é a comparação que desejamos explorar, para fazer com que, após executar o `gets`, `ebp` tenha o valor `0xcafebebe`. Um pouco antes, no `call` que faz a chamada para `gets`, é possível ver que ele copia o conteúdo que retorna (`eax`) para `-44(%ebp)` (ou seja, esta 44 bytes abaixo do ponteiro base). Isso indica que é nessa posição que o buffer está alocado. Logo, devemos começar a preencher a partir dessa região com dados aleatórios, e depois colocarmos `0xcafebebe` logo após `ebp` para que a comparação seja verdadeira.
+Em `func`, podemos observar que o programa compara `3405691582` (a versão decimal de `0xcafebebe`) com a posição de memória `ebp` + 8 bytes. Essa é a comparação que desejamos explorar, para fazer com que, após executar o `gets`, `ebp+8` tenha o valor `0xcafebebe`. Um pouco antes, no `call` que faz a chamada para `gets`, é possível ver que ele copia o conteúdo que retorna (`eax`) para `-44(%ebp)` (ou seja, esta 44 bytes abaixo do ponteiro base). Isso indica que é nessa posição que o buffer está alocado. Logo, devemos começar a preencher a partir dessa região com dados aleatórios, e depois colocaremos `0xcafebebe` logo após `ebp` para que a comparação seja verdadeira.
 
 O seguinte script Python usa a biblioteca pwn para abrir uma conexão com o servidor e enviar a linha que executa o exploit.
 
