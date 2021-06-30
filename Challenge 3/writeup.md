@@ -42,7 +42,9 @@ O objetivo do código é fazer com que `key` seja igual a `0xcafebebe`, mas o pr
 O próprio código já nos aponta pro lugar onde uma vulnerabilidade pode ser encontrada, na função `gets()`. A função, pertencente à `libc`, tem a seguinte descrição no `man`.
 
 ```
-The gets() function is equivalent to fgets() with an infinite size and a stream of stdin, except that the newline character (if any) is not stored in the string. It is the caller's responsibility to ensure that the input line, if any, is sufficiently short to fit in the string.
+The gets() function is equivalent to fgets() with an infinite size and a stream of stdin,
+except that the newline character (if any) is not stored in the string. It is the caller's
+responsibility to ensure that the input line, if any, is sufficiently short to fit in the string.
 ```
 
 Essa descrição já deixa claro o que deve ser feito: a função não verifica se o buffer alocado tem espaço suficiente para armazenar o conteúdo que será lido da entrada padrão. Assim, é possível fazermos um buffer overflow para alterar os conteúdos da pilha do programa.
