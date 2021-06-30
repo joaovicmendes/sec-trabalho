@@ -14,7 +14,7 @@ Download : http://pwnable.kr/bin/bof.c
 
 Running at : nc pwnable.kr 9000
 
-<img src="screencaps/nc.png"/>
+<img src="screencaps/nc.png" width=600/>
 
 ## Solução
 Inicialmente, o problema nos mostra o seguinte código fonte:
@@ -51,7 +51,7 @@ Essa descrição já deixa claro o que deve ser feito: a função não verifica 
 
 Ao utilizarmos o programa `objdump` pra descompilar o código, obtemos o seguinte código assembly para a função `main` e `func`:
 
-<img src="screencaps/objdump.png"/>
+<img src="screencaps/objdump.png" width=600/>
 
 ```
 0000068a <main>:
@@ -112,4 +112,4 @@ conn.interactive()
 
 Com esse código, conseguimos um shell interativo, e basta realizarmos um `cat flag` que obtemos `daddy, I just pwned a buFFer :)`.
 
-<img src="screencaps/overflow.png"/>
+<img src="screencaps/overflow.png" width=600/>
